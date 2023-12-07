@@ -1,0 +1,18 @@
+apiVersion: hypershift.openshift.io/v1beta1
+kind: NodePool
+metadata:
+  creationTimestamp: null
+  name: vcluster1
+  namespace: clusters
+spec:
+  arch: amd64
+  clusterName: vcluster1
+  management:
+    autoRepair: false
+    upgradeType: Replace
+  nodeDrainTimeout: 0s
+  platform:
+    type: Agent
+  replicas: 2
+  release:
+    image: "quay.io/openshift-release-dev/ocp-release:4.14.6-x86_64"

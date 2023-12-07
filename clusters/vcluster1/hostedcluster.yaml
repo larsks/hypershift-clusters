@@ -1,0 +1,71 @@
+apiVersion: hypershift.openshift.io/v1beta1
+kind: HostedCluster
+metadata:
+  creationTimestamp: null
+  name: vcluster1
+  namespace: clusters
+spec:
+  autoscaling: {}
+  controllerAvailabilityPolicy: HighlyAvailable
+  dns:
+    baseDomain: int.massopen.cloud
+  etcd:
+    managed:
+      storage:
+        persistentVolume:
+          size: 8Gi
+        type: PersistentVolume
+    managementType: Managed
+  fips: false
+  networking:
+    clusterNetwork:
+    - cidr: 10.132.0.0/14
+    networkType: OVNKubernetes
+    serviceNetwork:
+    - cidr: 172.31.0.0/16
+  platform:
+    agent:
+      agentNamespace: clusters-vcluster1
+    type: Agent
+  pullSecret:
+    name: vcluster1-pull-secret
+  release:
+    image: quay.io/openshift-release-dev/ocp-release:4.14.6-x86_64
+  secretEncryption:
+    aescbc:
+      activeKey:
+        name: vcluster1-etcd-encryption-key
+    type: aescbc
+  services:
+  - service: APIServer
+    servicePublishingStrategy:
+      nodePort:
+        address: api.vcluster1.int.massopen.cloud
+      type: NodePort
+  - service: OAuthServer
+    servicePublishingStrategy:
+      nodePort:
+        address: api.vcluster1.int.massopen.cloud
+      type: NodePort
+  - service: OIDC
+    servicePublishingStrategy:
+      nodePort:
+        address: api.vcluster1.int.massopen.cloud
+      type: None
+  - service: Konnectivity
+    servicePublishingStrategy:
+      nodePort:
+        address: api.vcluster1.int.massopen.cloud
+      type: NodePort
+  - service: Ignition
+    servicePublishingStrategy:
+      nodePort:
+        address: api.vcluster1.int.massopen.cloud
+      type: NodePort
+  - service: OVNSbDb
+    servicePublishingStrategy:
+      nodePort:
+        address: api.vcluster1.int.massopen.cloud
+      type: NodePort
+  sshKey:
+    name: vcluster1-ssh-key
