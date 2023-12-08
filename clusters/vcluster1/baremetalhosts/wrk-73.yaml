@@ -1,0 +1,20 @@
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  annotations:
+    bmac.agent-install.openshift.io/hostname: wrk-73
+    inspect.metal3.io: disabled
+  labels:
+    infraenvs.agent-install.openshift.io: vcluster1
+  name: wrk-73
+  namespace: clusters
+spec:
+  automatedCleaningMode: disabled
+  bmc:
+    address: idrac-virtualmedia://wrk-73-obm.nerc-ocp-prod.rc.fas.harvard.edu/redfish/v1/Systems/System.Embedded.1
+    credentialsName: nerc-bmc-credentials
+    disableCertificateVerification: true
+  bootMACAddress: 10:7D:1A:9D:F6:6F
+  customDeploy:
+    method: start_assisted_install
+  online: true
