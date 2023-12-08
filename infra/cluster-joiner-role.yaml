@@ -12,3 +12,9 @@ rules:
   - update
   - list
   - get
+- apiGroups:
+  - cluster.open-cluster-management.io
+  resources:
+  - managedclustersets/join
+  verbs:
+  - create
