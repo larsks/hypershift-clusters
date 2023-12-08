@@ -8,3 +8,4 @@ resources:
 - cluster-joiner-sa.yaml
 - cluster-joiner-role.yaml
 - cluster-joiner-rolebinding.yaml
+- placement.yaml
