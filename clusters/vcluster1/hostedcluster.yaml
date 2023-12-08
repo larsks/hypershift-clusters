@@ -29,8 +29,15 @@ spec:
     type: Agent
   pullSecret:
     name: vcluster1-pull-secret
+  
+  # According to [1], this must use a digest rather than a tag (but it seems
+  # to work with either).
+  #
+  # [1]: https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.9/html-single/clusters/index#ipv4-hosted-cluster-objects
   release:
-    image: quay.io/openshift-release-dev/ocp-release:4.14.6-x86_64
+    # aka quay.io/openshift-release-dev/ocp-release:4.14.6-x86_64
+    image: quay.io/openshift-release-dev/ocp-release@sha256:e5128c3b0ab225e0abf9344dae504e08b82dda4885bbd047e2dbc13cc3d9879b
+
   secretEncryption:
     aescbc:
       activeKey:
