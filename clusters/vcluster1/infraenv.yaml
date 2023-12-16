@@ -2,7 +2,7 @@ apiVersion: agent-install.openshift.io/v1beta1
 kind: InfraEnv
 metadata:
   name: vcluster1
-  namespace: clusters
+  namespace: clusters-vcluster1
 spec:
   additionalNTPSources:
   - endrun1.noc.harvard.edu
