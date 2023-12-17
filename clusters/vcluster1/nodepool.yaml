@@ -13,6 +13,6 @@ spec:
   nodeDrainTimeout: 0s
   platform:
     type: Agent
-  replicas: 2
+  replicas: 0
   release:
     image: "quay.io/openshift-release-dev/ocp-release:4.14.6-x86_64"
