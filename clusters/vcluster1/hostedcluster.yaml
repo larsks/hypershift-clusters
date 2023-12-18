@@ -35,8 +35,8 @@ spec:
   #
   # [1]: https://access.redhat.com/documentation/en-us/red_hat_advanced_cluster_management_for_kubernetes/2.9/html-single/clusters/index#ipv4-hosted-cluster-objects
   release:
-    # aka quay.io/openshift-release-dev/ocp-release:4.14.6-x86_64
-    image: quay.io/openshift-release-dev/ocp-release@sha256:e5128c3b0ab225e0abf9344dae504e08b82dda4885bbd047e2dbc13cc3d9879b
+    # aka quay.io/openshift-release-dev/ocp-release:4.14.5-x86_64
+    image: "quay.io/openshift-release-dev/ocp-release@sha256:0ec9d715c717b2a592d07dd83860013613529fae69bc9eecb4b2d4ace679f6f3"
 
   secretEncryption:
     aescbc:

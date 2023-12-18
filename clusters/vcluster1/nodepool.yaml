@@ -15,4 +15,5 @@ spec:
     type: Agent
   replicas: 0
   release:
-    image: "quay.io/openshift-release-dev/ocp-release:4.14.6-x86_64"
+    # quay.io/openshift-release-dev/ocp-release:4.14.5-x86_64
+    image: "quay.io/openshift-release-dev/ocp-release@sha256:0ec9d715c717b2a592d07dd83860013613529fae69bc9eecb4b2d4ace679f6f3"
