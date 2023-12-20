@@ -5,3 +5,4 @@ resources:
 - metallb-subscription.yaml
 - metallb-instance.yaml
 - hosted-cluster-ingress-ip.yaml
+- nmstate-operator.yaml
