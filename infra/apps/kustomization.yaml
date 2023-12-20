@@ -7,3 +7,4 @@ resources:
 - hosted-cluster-ingress-ip.yaml
 - nmstate-operator.yaml
 - nmstate-instance.yaml
+- nmstate-disable-eno2.yaml

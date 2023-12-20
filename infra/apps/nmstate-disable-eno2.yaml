@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: nmstate-disable-eno2
+spec:
+  generators:
+    - clusterDecisionResource:
+        configMapRef: acm-placement
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: hosted-clusters
+  template:
+    metadata:
+      name: "{{ name }}-nmstate-disable-eno2"
+    spec:
+      project: default
+      destination:
+        namespace: openshift-gitops
+        name: "{{ name }}"
+      source:
+        path: "nmstate-disable-eno2"
+        repoURL: https://github.com/larsks/hypershift-test-apps.git
+        targetRevision: HEAD
+      syncPolicy:
+        automated:
+          selfHeal: true
