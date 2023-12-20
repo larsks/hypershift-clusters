@@ -1,0 +1,5 @@
+images:
+- path: spec/release/image
+  kind: HostedCluster
+- path: spec/release/image
+  kind: NodePool

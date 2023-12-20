@@ -9,3 +9,11 @@ resources:
 - nodepool.yaml
 - sshkey.yaml
 - join-clusterset.yaml
+
+configurations:
+  - kustomizeconfigs/imagereference.yaml
+
+images:
+  - name: ocp-release
+    newName: quay.io/openshift-release-dev/ocp-release
+    digest: sha256:0ec9d715c717b2a592d07dd83860013613529fae69bc9eecb4b2d4ace679f6f3
