@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: metallb-instance
+spec:
+  generators:
+    - clusterDecisionResource:
+        configMapRef: acm-placement
+        labelSelector:
+          matchLabels:
+            cluster.open-cluster-management.io/placement: hosted-clusters
+  template:
+    metadata:
+      name: "{{ name }}-metallb-instance"
+    spec:
+      project: default
+      destination:
+        namespace: openshift-gitops
+        name: "{{ name }}"
+      source:
+        path: "metallb-instance"
+        repoURL: https://github.com/larsks/hypershift-test-apps.git
+        targetRevision: HEAD
+      syncPolicy:
+        automated:
+          selfHeal: true

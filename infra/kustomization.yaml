@@ -6,3 +6,4 @@ resources:
 - managedclustersetbindings/
 - placements
 - gitopscluster.yaml
+- apps
