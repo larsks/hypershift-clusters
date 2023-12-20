@@ -6,3 +6,4 @@ resources:
 - metallb-instance.yaml
 - hosted-cluster-ingress-ip.yaml
 - nmstate-operator.yaml
+- nmstate-instance.yaml
