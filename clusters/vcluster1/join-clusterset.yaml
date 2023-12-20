@@ -4,7 +4,17 @@ metadata:
   name: vcluster1-join-clusterset
   namespace: clusters
   annotations:
-    alpha.image.policy.openshift.io/resolve-names: '*'
+    image.openshift.io/triggers: |
+      [
+        {
+          "from": {
+            "kind": "ImageStreamTag",
+            "name": "cli:latest",
+            "namespace": "openshift"
+          },
+          "fieldPath": "spec.template.spec.containers[?(@.name==\"cli\")].image"
+        }
+      ]
 spec:
   template:
     spec:
