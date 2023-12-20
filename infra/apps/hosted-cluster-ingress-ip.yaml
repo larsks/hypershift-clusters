@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: default-ingress-ip
+spec:
+  generators:
+    - git:
+        repoURL: https://github.com/larsks/hypershift-test-apps.git
+        revision: HEAD
+        directories:
+          - path: default-ingress-ip/overlay/*
+  template:
+    metadata:
+      name: "{{ path.basename }}-default-ingress-ip"
+    spec:
+      project: default
+      destination:
+        namespace: openshift-gitops
+        name: "{{ path.basename }}"
+      source:
+        path: "default-ingress-ip/overlay/{{ path.basename }}"
+        repoURL: https://github.com/larsks/hypershift-test-apps.git
+        targetRevision: HEAD
+      syncPolicy:
+        automated:
+          selfHeal: true

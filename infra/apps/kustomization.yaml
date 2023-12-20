@@ -4,3 +4,4 @@ namespace: openshift-gitops
 resources:
 - metallb-subscription.yaml
 - metallb-instance.yaml
+- hosted-cluster-ingress-ip.yaml
