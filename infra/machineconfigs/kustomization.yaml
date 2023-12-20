@@ -1,0 +1,10 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: clusters
+
+configMapGenerator:
+  - name: machineconfig-disable-eno2
+    options:
+      disableNameSuffixHash: true
+    files:
+      - config=disable-eno2.yaml
