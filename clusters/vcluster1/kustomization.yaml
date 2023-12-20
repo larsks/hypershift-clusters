@@ -7,6 +7,5 @@ resources:
 - capi-provider-role.yaml
 - hostedcluster.yaml
 - nodepool.yaml
-- infraenv.yaml
 - sshkey.yaml
 - join-clusterset.yaml
