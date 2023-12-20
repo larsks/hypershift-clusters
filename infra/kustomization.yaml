@@ -7,5 +7,5 @@ resources:
 - placements
 - gitopscluster.yaml
 - apps
+- infraenv
 - managedclusterset.yaml
-- infraenv.yaml

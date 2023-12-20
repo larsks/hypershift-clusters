@@ -4,7 +4,6 @@ commonLabels:
   hosted-cluster-name: vcluster1
 resources:
 - namespace.yaml
-- capi-provider-role.yaml
 - hostedcluster.yaml
 - nodepool.yaml
 - sshkey.yaml

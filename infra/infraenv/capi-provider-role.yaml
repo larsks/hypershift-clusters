@@ -3,7 +3,7 @@ kind: Role
 metadata:
   creationTimestamp: null
   name: capi-provider-role
-  namespace: clusters-vcluster1
+  namespace: clusters
 rules:
 - apiGroups:
   - agent-install.openshift.io
