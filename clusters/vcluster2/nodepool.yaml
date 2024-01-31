@@ -1,0 +1,24 @@
+apiVersion: hypershift.openshift.io/v1beta1
+kind: NodePool
+metadata:
+  creationTimestamp: null
+  name: vcluster2
+  namespace: clusters
+spec:
+  arch: amd64
+  clusterName: vcluster2
+  management:
+    autoRepair: false
+    upgradeType: Replace
+  nodeDrainTimeout: 0s
+  platform:
+    type: Agent
+  # There is currently a bug that prevent a cluster from acquiring nodes for
+  # the nodepool if the agents are created before the cluster; see
+  # https://github.com/openshift/cluster-api-provider-agent/pull/95
+  replicas: 0
+  release:
+    # quay.io/openshift-release-dev/ocp-release:4.14.5-x86_64
+    image: ocp-release
+  config:
+    - name: machineconfig-disable-eno2

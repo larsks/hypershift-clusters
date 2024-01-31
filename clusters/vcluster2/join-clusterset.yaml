@@ -1,0 +1,47 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: vcluster2-join-clusterset
+  namespace: clusters
+  annotations:
+    image.openshift.io/triggers: |
+      [
+        {
+          "from": {
+            "kind": "ImageStreamTag",
+            "name": "cli:latest",
+            "namespace": "openshift"
+          },
+          "fieldPath": "spec.template.spec.containers[?(@.name==\"cli\")].image"
+        }
+      ]
+spec:
+  template:
+    spec:
+      serviceAccountName: cluster-joiner
+      containers:
+      - image: cli
+        name: vcluster2-patch-managed-cluster
+        env:
+          - name: CLUSTER_NAME
+            value: vcluster2
+        command:
+          - /bin/sh
+          - -c
+          - |
+            while ! kubectl wait \
+                --for condition=ManagedClusterConditionAvailable \
+                "managedcluster/${CLUSTER_NAME}"; do
+              sleep 1
+            done
+
+            kubectl patch "managedcluster/${CLUSTER_NAME}" --type merge --patch '
+            {
+              "metadata": {
+                "labels": {
+                  "cluster.open-cluster-management.io/clusterset": "hosted-clusters"
+                }
+              }
+            }
+            '
+      restartPolicy: Never
